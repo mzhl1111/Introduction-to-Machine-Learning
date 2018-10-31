@@ -19,7 +19,7 @@ for i = 1:num_expts
     train_x = train(:,1);
     train_y = train(:,2);
     test_x = test(:,1);
-    test_y = test(:,1);
+    test_y = test(:,2);
     
     H_2_x = [train_x train_x.^2];
     H_10_x = [train_x train_x.^2 train_x.^3 train_x.^4 train_x.^5 train_x.^6 train_x.^7 train_x.^8 train_x.^9 train_x.^10];
