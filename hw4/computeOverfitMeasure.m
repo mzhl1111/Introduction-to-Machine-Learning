@@ -27,8 +27,8 @@ for i = 1:num_expts
     H_10_w = glmfit(H_10_x,train_y,'normal');
     
     
-    test_error_2 = sum((test_y - [test_x test_x.^2]* transpose(H_2_w)).^2);
-    test_error_10 = sum((test_y - [test_x test_x.^2 test_x.^3 test_x.^4 test_x.^5 test_x.^6 test_x.^7 test_x.^8 test_x.^9 test_x.^10]* transpose(H_10_w)).^2);
+    test_error_2 = sum((test_y - [ones(N_test,1) test_x test_x.^2]* H_2_w).^2);
+    test_error_10 = sum((test_y - [ones(N_test,1) test_x test_x.^2 test_x.^3 test_x.^4 test_x.^5 test_x.^6 test_x.^7 test_x.^8 test_x.^9 test_x.^10]* H_10_w).^2);
     
     overfit_m(i) = test_error_2- test_error_10;
     

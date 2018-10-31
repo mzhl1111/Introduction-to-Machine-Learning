@@ -19,7 +19,7 @@ train_a = normrnd(0,1,[1,Q_f+1]) / sum(sqrt(1./(1:2:(2*Q_f+2))));
 for i = 1:N_train
     train_x(i) = 2*rand(1)-1;
     for j = 0:Q_f
-        train_y(i)= train_y(i) + train_a(i)*computeLegPoly(train_x(i),j);
+        train_y(i)= train_y(i) + train_a(j+1)*computeLegPoly(train_x(i),j);
     end  
     train_y(i) = train_y(i)+sigma*normrnd(0,1);
 end 
@@ -29,7 +29,7 @@ test_y = zeros(N_test,1);
 for i = 1:N_test
     test_x(i) = 2*rand(1)-1;
     for j = 0:Q_f
-        test_y(i)= test_y(i) + train_a(i)*computeLegPoly(test_x(i),j);
+        test_y(i)= test_y(i) + train_a(j+1)*computeLegPoly(test_x(i),j);
     end  
     test_y(i) = test_y(i)+sigma*normrnd(0,1);
 end 
