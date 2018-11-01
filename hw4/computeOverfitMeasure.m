@@ -28,7 +28,7 @@ for i = 1:num_expts
     
     
     test_error_2 = sum((test_y - [test_x.^0 test_x.^1 test_x.^2]* H_2_w).^2)/N_test;
-    test_error_10 = sum((test_y - [test_x.^0 test_x.^2 test_x.^2 test_x.^3 test_x.^4 test_x.^5 test_x.^6 test_x.^7 test_x.^8 test_x.^9 test_x.^10]* H_10_w).^2)/N_test;
+    test_error_10 = sum((test_y - [test_x.^0 test_x.^1 test_x.^2 test_x.^3 test_x.^4 test_x.^5 test_x.^6 test_x.^7 test_x.^8 test_x.^9 test_x.^10]* H_10_w).^2)/N_test;
     
     overfit_m(i) = test_error_2- test_error_10;
     
