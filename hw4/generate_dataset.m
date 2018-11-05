@@ -10,11 +10,11 @@ function [ train_set test_set ] = generate_dataset( Q_f, N_train, N_test, sigma 
 %       train_set and test_set are both 2-column matrices in which each row
 %       represents an (x,y) pair
 
-q_a = normrnd(0,1,[Q_f+1,1]) / sum(sqrt(1./(1:2:(2*Q_f+2))));
+q_a = normrnd(0,1,[Q_f+1,1]) / sqrt(sum(1./(1:2:(2*Q_f+2))));
 
-xs = 2*rand(1,N_train+N_test);
+xs = 2*rand(1,N_train+N_test)-1;
 
-ys = sum(computeLegPoly(xs,Q_f) .* q_a);
+ys = sum(computeLegPoly(xs,Q_f) .* q_a)+ sigma*normrnd(0,1,[1,N_train+N_test]);
 
 data = vertcat(xs,ys);
 

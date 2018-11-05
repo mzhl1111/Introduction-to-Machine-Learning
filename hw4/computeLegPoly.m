@@ -8,8 +8,11 @@ function [ z ] = computeLegPoly( x, Q )
 %          to Q, evaluated at the corresponding x value in the input
 
 z = zeros(Q+1,length(x));
-for i = 0:Q
-    z(i+1,:) = nchoosek(Q,i)^2*(x-1).^(Q-i).*(x+1).^i/2^Q;
+z(1,:) = ones(1,length(x));
+for i = 1:Q
+    for j = 0:i
+    z(i+1,:) = z(i+1,:)+((nchoosek(i,j))^2*(x-1).^(i-j).*(x+1).^j)/2^i;
+    end
 end 
 z;
 end 
