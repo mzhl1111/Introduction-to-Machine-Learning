@@ -15,7 +15,7 @@ function [ overfit_m ] = computeOverfitMeasure( true_Q_f, N_train, N_test, var, 
 overfit_m = zeros(num_expts,1);
 
 for i = 1:num_expts
-    [train, test] = generate_dataset(true_Q_f,N_train,N_test,var);
+    [train, test] = generate_dataset(true_Q_f,N_train,N_test,sqrt(var));
     train_x = train(:,1);
     train_y = train(:,2);
     test_x = test(:,1);
