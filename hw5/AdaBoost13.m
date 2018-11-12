@@ -1,4 +1,4 @@
-function [ train_err, test_err ] = AdaBoost( X_tr, y_tr, X_te, y_te, n_trees )
+function [ train_err, test_err ] = AdaBoost13( X_tr, y_tr, X_te, y_te, n_trees )
 %AdaBoost: Implement AdaBoost using decision stumps learned
 %   using information gain as the weak learners.
 %   X_tr: Training set
@@ -56,4 +56,3 @@ train_err = train_err_recorder;
 
 
 end
-
