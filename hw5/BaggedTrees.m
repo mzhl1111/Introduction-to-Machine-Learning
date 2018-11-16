@@ -14,17 +14,12 @@ bag_size = size(X,1);
 ooberr_record = zeros(numBags,size(X,1));
 for i= 1: numBags
     index = datasample(1:bag_size, bag_size);
-   %oob_index = setdiff(1:bag_size,unique(index));
+   oob_index = setdiff(1:bag_size,unique(index));
     model = fitctree(X(index,:),  Y(index,:));
-    %oob_label = predict(model,X(oob_index,:));
+    oob_label = predict(model,X(oob_index,:));
     %ooberr_record(i,oob_index) = oob_label ~= Y(oob_index,:);
     ooberr_record(i,:) = predict(model,X)-4;
 end 
 
-    prediction = sign(sum(ooberr_record));
-    tie = find(~prediction);
-    prediction(tie) = (datasample([-1,1],size(tie,2)));
-    prediction = prediction+4;
-    
-    oobErr = sum(prediction ~= Y)/bag_size;
+   
 end

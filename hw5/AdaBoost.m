@@ -30,9 +30,12 @@ for i = 1:n_trees
 end
 
 test_tag_pool = zeros(n_trees,size(X_tr,1));
+%train_tag_pool = zeros(n_trees, size(X_tr,1));
+
 
 for j = i:n_trees
-    test_tag_pool(1,:) = D .* (predict(model_pool(i),X_te)-4);
+    test_tag_pool(j,:) = D(j)* (predict(model_pool(j),X_te)-4);  
+    %train_tag_pool(j,:) = D(j) * (predict(model_pool(j),X_tr)-4);
 end 
 
 test_tag = sign(sum(test_tag_pool));
